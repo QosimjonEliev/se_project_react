@@ -1,0 +1,26 @@
+.weather {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+  width: 1350px;
+  border-radius: 12px;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.weather__info {
+  position: absolute;
+  top: 20px;
+  left: 16px;
+  margin: 0;
+  font-size: 36px;
+  line-height: 40px;
+  color: white;
+}
+
+.weather__image {
+  height: 80px;
+  max-width: 1350px;
+}
