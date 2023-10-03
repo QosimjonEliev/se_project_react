@@ -1,0 +1,12 @@
+/* .clothing__section {
+  display: flex;
+  flex: 1 0 auto;
+  font-size: 20px;
+  margin-top: 10px;
+} */
+
+.clothing__section_cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
