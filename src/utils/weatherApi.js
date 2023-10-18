@@ -1,50 +1,36 @@
-import { apiKey, latitude, longitude } from "../utils/constants";
+import { processServerResponse } from "./Api";
+import { longitude, latitude, APIkey } from "./constants";
 
-const getForecastWeather = () => {
-  const weatherData = fetch(
-    `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${apiKey}`
-  ).then(processServerResponce);
-
-  return weatherData;
+export const getForecast = () => {
+  const weatherApi = fetch(
+    `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${APIkey}`
+  ).then(processServerResponse);
+  return weatherApi;
 };
 
-const processServerResponce = (res) => {
-  if (res.ok) {
-    return res.json();
-  } else {
-    return Promise.reject(`Error: ${res.status}`);
-  }
-};
-
-const parseWeatherData = (data) => {
+export const parseWeatherData = (data) => {
   const main = data.main;
-  const temp = main && main.temp;
-  return Math.ceil(temp);
+  const temperature = main && main.temp;
+  const weather = {
+    temperature: {
+      F: Math.round(temperature),
+      C: Math.round(((temperature - 32) * 5) / 9),
+    },
+  };
+  return weather;
 };
 
-const parseCityData = (data) => {
-  const city = data && data.name;
-  return city;
-}
-
-const getWeatherType = (weatherTemp) => {
-  if (weatherTemp >= 86) {
-    return "hot";
-  } else if (weatherTemp >= 66 && weatherTemp <= 85) {
-    return "warm";
-  } else if (weatherTemp <= 65) {
-    return "cold";
-  }
+export const parseLocation = (data) => {
+  const location =  data.name;
+  return location;
 };
 
-const findWeatherOption = (option, day, weather) => {
-  return option.day === day && option.weather === weather;
+
+export const parseTimeOfDay = (data) => {
+  const sunsetTime = data.sys.sunset * 1000;
+  const currentTime = Math.floor(Date.now() / 1000);
+  if (currentTime < sunsetTime) {
+    return true;
+  } else return false;
 };
 
-export {
-  getWeatherType,
-  parseWeatherData,
-  getForecastWeather,
-  findWeatherOption,
-  parseCityData,
-};

@@ -1,7 +1,7 @@
 import React from "react";
 import ItemCard from "../ItemCard/ItemCard";
 import "./ClothesSection.css";
-const ClothesSection = ({ onCreateModal, onSelectCard, clothingArr }) => {
+const ClothesSection = ({ vreateModalOn, onSelectCard, clothingArr }) => {
   return (
     <div className="clothing__section">
       <div className="profile__heading">
@@ -9,7 +9,7 @@ const ClothesSection = ({ onCreateModal, onSelectCard, clothingArr }) => {
         <button
           type="button"
           className="profile__add_button"
-          onClick={onCreateModal}
+          onClick={vreateModalOn}
         >
           + Add New
         </button>

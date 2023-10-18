@@ -1,18 +1,34 @@
-import "./ItemModal.css";
+import "../ItemModal/ItemModal.css";
 
-const ItemModal = ({ selectedCard, onClose }) => {
+const ItemModal = ({ selectedCard, onClose, onDeleteItem }) => {
+  const handleCardDelete = () => {
+    onDeleteItem(selectedCard._id);
+  };
   return (
-    <div className="modal__preview">
+    <div className={`modal`}>
       <div className="modal__content">
-        <button className="modal__close" onClick={onClose}></button>
+        <button
+          type="button"
+          onClick={onClose}
+          className="modal__close-button-white"
+        ></button>
         <img
-          className="modal__image"
-          src={selectedCard.link}
-          alt={`picture of a ${selectedCard.name}`}
+          src={selectedCard.imageUrl}
+          alt={selectedCard.name}
+          className="modal__image-preview"
         />
-        <div className="modal__description-wrap">
-          <div className="modal__description">{selectedCard.name}</div>
-          <div className="modal__description">Weather: {selectedCard.weather}</div>
+        <div className="modal__footer">
+          <h3 className="modal__item-name">{selectedCard.name}</h3>
+          <div className="modal__weather-type">
+            Weather type: {selectedCard.weather}
+          </div>
+          <button
+            type="button"
+            className="modal__delete-button"
+            onClick={handleCardDelete}
+          >
+            Delete Item
+          </button>
         </div>
       </div>
     </div>

@@ -1,27 +1,37 @@
-import logo from "../../images/logo.svg";
-import avatarImage from "../../images/avatar.svg";
 import "./Header.css";
-
-const Header = ({ createModalOn, weatherCity }) => {
-  const currentDate = new Date().toLocaleString("default", {
-    month: "long",
-    day: "numeric",
-  });
-
+import logo from "../../images/logo.svg";
+import avatar from "../../images/avatar.svg";
+import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
+const Header = ({ vreateModalOn, location }) => {
   return (
     <header className="header">
-      <div className="header__logo-date">
-        <img src={logo} alt="logo" className="header__logo" />
-        <div className="header__date">
-          {currentDate}, {weatherCity}
+      <div className="header__logo">
+        <div className="header__left">
+          <Link to="/">
+            <img src={logo} alt="WTWR Logo" />
+          </Link>
         </div>
+        <h3 className="header__location">9/16, {location}</h3>
       </div>
-      <div className="header__avatar-button">
-        <button type="button" onClick={createModalOn} className="header__button">
-          + Add Clothes
-        </button>
-        <p className="header__username">Terrence Tegegne</p>
-        <img className="header__avatar" src={avatarImage} alt="avatar" />
+      <div className="header__avatar">
+        <div className="header__right">
+          <ToggleSwitch />
+
+          <button
+            className="header__button"
+            onClick={vreateModalOn}
+            type="text"
+          >
+            + Add clothes
+          </button>
+        </div>
+        <Link className="header__name" to="/profile">
+          Terrence Tegegne
+        </Link>
+        <div>
+          <img src={avatar} alt="Avatar Logo" className="header__avatar" />
+        </div>
       </div>
     </header>
   );

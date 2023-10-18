@@ -1,37 +1,48 @@
 import WeatherCard from "../WeatherCard/WeatherCard";
 import ItemCard from "../ItemCard/ItemCard";
-import { defaultClothingItems } from "../../utils/constants";
-import { getWeatherType } from "../../utils/weatherApi";
-import "./Main.css";
+import { useContext } from "react";
+import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
 
-const Main = ({ weatherTemp, onSelectCard }) => {
-  const weatherType = getWeatherType(weatherTemp);
+function Main({ weatherTemp, onSelectCard, clothingArr, timeOfDay }) {
+  const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
+  const temp = weatherTemp?.temperature?.[currentTemperatureUnit] || "";
 
-  const filteredCards = defaultClothingItems.filter((item) => {
-    return item.weather.toLowerCase() === weatherType;
+  const getWeatherType = () => {
+    const temp = weatherTemp?.temperature?.F;
+    if (temp >= 86) {
+      return "hot";
+    } else if (temp >= 66 && temp <= 85) {
+      return "warm";
+    } else if (temp <= 65) {
+      return "cold";
+    }
+  };
+
+  const weatherType = getWeatherType(temp);
+  const filteredCards = clothingArr.filter((item) => {
+    return item.weather === weatherType;
   });
-
   return (
     <main className="main">
-      <WeatherCard day={true} weather={"cloudy"} weatherTemp={weatherTemp} />
-      <section className="main__content">
-        <h3 className="main__title">
-          Today is {weatherTemp}°F / You may want to wear:
-        </h3>
-        <ul className="main__card-wrapper">
+      <WeatherCard day={timeOfDay} type="clear" weatherTemp={temp} />
+      <section className="card__section" id="card-section">
+        <h2 className="card__section-title">
+          Today is {temp}° {currentTemperatureUnit}. You may want to wear:
+        </h2>
+        <div className="card__items">
           {filteredCards.map((item) => {
             return (
               <ItemCard
-                key={item._id}
                 item={item}
                 onSelectCard={onSelectCard}
+                key={item?.id || item?._id}
               />
             );
           })}
-        </ul>
+        </div>
       </section>
     </main>
   );
-};
+}
 
 export default Main;
