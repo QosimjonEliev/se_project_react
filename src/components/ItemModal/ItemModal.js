@@ -17,7 +17,7 @@ const ItemModal = ({ selectedCard, onDelete, onClose }) => {
         <img
           className="modal__image"
           src={selectedCard.imageUrl}
-          alt="modalImage"
+          alt={selectedCard.name}
         />
         <div className="modal__description">
           <div>{selectedCard.name}</div>
