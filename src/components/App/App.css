@@ -1,0 +1,11 @@
+.main {
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  padding: 0 20px;
+}
+.page {
+  max-width: 1100px;
+  margin: 0 auto;
+}
