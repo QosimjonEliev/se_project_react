@@ -1,5 +1,6 @@
 import "./Footer.css";
-export default function Footer() {
+
+function Footer() {
   return (
     <footer className="footer">
       <div>Developed by Qosimjon Eliev</div>
@@ -7,3 +8,5 @@ export default function Footer() {
     </footer>
   );
 }
+
+export default Footer;

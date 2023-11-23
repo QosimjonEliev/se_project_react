@@ -1,38 +1,36 @@
-const baseUrl =
-  "http://localhost:3001";
+import React from "react";
+import { baseUrl, headers } from "./constants";
+import { checkResponse } from "./utils";
 
-export const checkServerResponse = (res) => {
-  return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
+export const getClothingItems = () => {
+  return fetch(`${baseUrl}/items`, {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  }).then(checkResponse);
 };
 
-export function getItems() {
-  return fetch(`${baseUrl}/items`, {
-    method: "GET",
-  }).then((res) => {
-    return checkServerResponse(res);
-  });
-}
-
-export function addItems(name, imageUrl, weather) {
+export const postNewClothingItem = (newItem) => {
   return fetch(`${baseUrl}/items`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      authorization: `Bearer ${newItem.token}`,
     },
     body: JSON.stringify({
-      name: name,
-      imageUrl: imageUrl,
-      weather: weather,
+      name: newItem.name,
+      weather: newItem.weather,
+      imageUrl: newItem.imageUrl,
     }),
-  }).then((res) => {
-    return checkServerResponse(res);
-  });
-}
+  }).then(checkResponse);
+};
 
-export function deleteItems(selectedCard) {
-  return fetch(`${baseUrl}/items/${selectedCard.id}`, {
+export const deleteClothingItems = (id, token) => {
+  return fetch(`${baseUrl}/items/${id}`, {
     method: "DELETE",
-  }).then((res) => {
-    return checkServerResponse(res);
-  });
-}
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+  }).then(checkResponse);
+};

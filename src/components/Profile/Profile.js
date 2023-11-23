@@ -1,28 +1,28 @@
 import React from "react";
-import SideBar from "../SideBar/SideBar";
 import "./Profile.css";
-import ClothesSection from "../ClothesSection/ClothesSection";
-const Profile = ({
-  createModalOn,
-  clothingItems,
-  weatherTemp,
-  onSelectedCard,
-}) => {
-  const user = {
-    username: "User Name",
-    avatar: "../../images/avatar.svg",
-  };
+import SideBar from "./SideBar/SideBar";
+import ClothesSection from "./ClothesSection/ClothesSection";
 
+const Profile = ({
+  onCreateModal,
+  clothingItems,
+  onSelectCard,
+  onEditProfileModal,
+  onLogout,
+  onCardLike,
+}) => {
   return (
-    <div className="profile">
-      <SideBar user={user} />
+    <section className="profile">
+      <div className="profile__sidebar">
+        <SideBar onEditProfileModal={onEditProfileModal} onLogout={onLogout} />
+      </div>
       <ClothesSection
-        createModalOn={createModalOn}
+        onCreateModal={onCreateModal}
         clothingItems={clothingItems}
-        weatherTemp={weatherTemp}
-        onSelectedCard={onSelectedCard}
+        onSelectCard={onSelectCard}
+        onCardLike={onCardLike}
       />
-    </div>
+    </section>
   );
 };
 
