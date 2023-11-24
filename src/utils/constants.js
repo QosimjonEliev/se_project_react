@@ -78,9 +78,9 @@ export const weatherOptions = [
 export const latitude = 40.6421504;
 export const longitude = -73.9475456;
 export const apiKey = "5bb8f31f1d57277bd49e602f1fbcb48a";
-export const baseUrl = "http://localhost:3001";
+export const baseUrl = "";
 
 export const headers = {
-  authorization: "",
+  authorization: "http://localhost:3001",
   "Content-Type": "application/json",
 };
