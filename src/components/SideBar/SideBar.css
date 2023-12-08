@@ -1,0 +1,111 @@
+.sidebar {
+  margin-right: 116px;
+  max-height: 56px;
+  align-items: center;
+}
+
+.sidebar__user-info {
+  display: flex;
+  width: 229px;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.sidebar__avatar-image {
+  width: 56px;
+  height: 56px;
+  border: rgba(0, 0, 0, 0.5) 1px solid;
+  margin-right: 16px;
+  border-radius: 28px;
+}
+.sidebar__avatar-letter {
+  display: flex;
+  font-family: "Cabinet Grotesk", Arial, sans-serif;
+  font-size: 20px;
+  color: rgba(255, 255, 255, 1);
+  width: 56px;
+  height: 56px;
+  border: rgba(0, 0, 0, 0.5) 1px solid;
+  background-color: rgba(0, 0, 0, 0.2);
+  margin-right: 16px;
+  border-radius: 28px;
+  justify-content: center;
+  align-items: center;
+}
+
+.sidebar__avatar-name {
+  font-family: "Cabinet Grotesk", Arial, sans-serif;
+  font-size: 20px;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.sidebar__options {
+  font-family: "Cabinet Grotesk", Arial, sans-serif;
+  font-size: 20px;
+}
+
+.sidebar__options:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.sidebar__avatar-placeholder {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.2);
+  font-family: "Cabinet Grotesk", Arial, sans-serif;
+  color: #fff;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.sidebar__buttons {
+  display: flex;
+  position: absolute;
+  left: 40px;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.sidebar__edit-button {
+  color: #000;
+  border: none;
+  background-color: transparent;
+  font-family: "Cabinet Grotesk", Arial, sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-bottom: 8px;
+  padding: 0;
+}
+
+.sidebar__edit-button:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.sidebar__logout-button {
+  color: #000;
+  border: none;
+  background-color: transparent;
+  font-family: "Cabinet Grotesk", Arial, sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  padding: 0;
+}
+
+.sidebar__logout-button:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
