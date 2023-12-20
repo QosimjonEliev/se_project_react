@@ -62,7 +62,7 @@ export const WeatherOptions = [
 ];
 
 export const baseUrl = process.env.NODE_ENV === "production"
-? 'https://api.wtwr.eqr.com.jumpingcrab.com'
+? 'https://	api.wtwr.eqr.crabdance.com'
 : 'http://localhost:3001';
 
 export const headers = {
